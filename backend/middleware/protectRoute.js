@@ -18,7 +18,7 @@ export const protectRoute = async (req, res, next) => {
       });
     }
 
-    console.log("Decoded token ", decoded);
+    // console.log("Decoded token ", decoded);
     // the userId is the payload (userId) we used when creating the token and we do not want to select the user's password, so we minus it
     const user = await User.findById(decoded.userId).select("-password");
     if (!user) {
