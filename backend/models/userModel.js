@@ -50,7 +50,14 @@ const userSchema = new mongoose.Schema(
     link: {
       type: String,
       default: ""
-    }
+    },
+    likedPosts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+        default: []
+      }
+    ]
   },
   {
     // this will automatically give us the createdAt field and updates it when the user registers or inserted
