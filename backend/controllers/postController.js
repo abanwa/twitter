@@ -144,9 +144,12 @@ export const likeUnlikePost = async (req, res) => {
       await Post.updateOne({ _id: postId }, { $pull: { likes: userId } });
       // we will remove the id of the post from the user's likedPost array field
       await User.updateOne({ _id: userId }, { $pull: { likedPosts: postId } });
-      res.status(200).json({
-        message: "Post unliked successfully"
-      });
+
+      // we will return all the recnet likes after the user has unlike the post
+      const updatedLikes = post.likes.filter(
+        (id) => id.toString() !== userId.toString()
+      );
+      res.status(200).json(updatedLikes);
     } else {
       // Like the post
       post.likes.push(userId);
@@ -162,9 +165,10 @@ export const likeUnlikePost = async (req, res) => {
       });
 
       await notification.save();
-      res.status(200).json({
-        message: "Post liked successfully"
-      });
+
+      // we will return the updated likes after user has liked the post
+      const updatedLikes = post.likes;
+      res.status(200).json(updatedLikes);
     }
   } catch (err) {
     console.log(`Error in likeUnlikePost in postController: ${err.message}`);
