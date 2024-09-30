@@ -55,12 +55,12 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use((err, req, res, next) => {
-  if (err) {
-    console.log("error message is: ", err?.message);
-  }
-  next(err);
-});
+// app.use((err, req, res, next) => {
+//   if (err) {
+//     console.log("error message is: ", err?.message);
+//   }
+//   next(err);
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -4,8 +4,10 @@
   "description": "",
   "main": "backend/index.js",
   "scripts": {
-    "dev": "SET NODE_ENV=development&nodemon backend/server.js",
-    "start": "SET NODE_ENV=production&node backend/server.js",
+    "dev1": "SET NODE_ENV=development&nodemon backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "start1": "SET NODE_ENV=production&node backend/server.js",
+    "start": "node backend/server.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
