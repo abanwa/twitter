@@ -22,7 +22,7 @@ cloudinary.config({
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-console.log("node env ", process.env.NODE_ENV);
+// console.log("node env ", process.env.NODE_ENV);
 
 // WE WILL CONNECT THE BCAKEND TO THE FRONTEND WHEN WE DEPLOY
 const __dirname = path.resolve();
@@ -47,7 +47,7 @@ app.use("/api/notifications", notificationRoutes);
 
 // THIS IS WHEN WE DEPLOY THE APPLICATION
 if (process.env.NODE_ENV === "production") {
-  console.log("PRODCTION");
+  // console.log("PRODCTION");
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
   app.get("*", (req, res) => {
