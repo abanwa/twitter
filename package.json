@@ -2,13 +2,14 @@
   "name": "twitter-clone",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/index.js",
+  "main": "backend/server.js",
   "scripts": {
-    "dev1": "SET NODE_ENV=development&nodemon backend/server.js",
     "dev": "nodemon backend/server.js",
-    "start1": "SET NODE_ENV=production&node backend/server.js",
     "start": "node backend/server.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "render-build": "npm run build",
+    "client": "npm run dev --prefix frontend",
+    "dev:fullstack": "concurrently \"npm run dev\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,7 @@
     "mongoose": "^8.6.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "concurrently": "^8.2.1"
   }
 }
